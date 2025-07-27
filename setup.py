@@ -116,15 +116,22 @@ def get_install_requirements() -> list:
 
     for line in requirements_content.splitlines():
         line = line.strip()
+        
+        # Skip comments dan empty lines
         if not line or line.startswith('#'):
             continue
+        
+        # Handle platform-specific requirements
         if ';platform_system==' in line:
             package, condition = line.split(';platform_system==')
             target_platform = condition.strip('"\'')
+            
             if current_platform == target_platform:
                 requirements.append(package.strip())
         else:
+            # Regular requirement tanpa platform condition
             requirements.append(line)
+
     return requirements
 
 def get_extra_requirements() -> dict:
@@ -161,7 +168,9 @@ def get_extra_requirements() -> dict:
             'cryptography>=41.0.0,<42.0.0',
             'bcrypt>=4.0.0,<5.0.0'
         ],
-        'all': []
+        'all': [
+            # Combine semua extra requirements
+        ]
     }
 
 def get_entry_points() -> dict:
@@ -189,11 +198,13 @@ def get_data_files() -> list:
     """Define additional data files untuk installation."""
     data_files = []
 
+    # Configuration files
     config_files = [
         ('config', ['config.ini']),
         ('docs', ['README.md', 'LICENSE']),
     ]
 
+    # Add example files jika ada
     examples_dir = Path('examples')
     if examples_dir.exists():
         example_files = [str(f) for f in examples_dir.glob('*') if f.is_file()]
@@ -219,19 +230,24 @@ def create_directories():
         'credentials',
         'temp'
     ]
+
     for directory in directories:
         Path(directory).mkdir(exist_ok=True, mode=0o755)
+        
+        # Create .gitkeep file untuk ensure directory presence dalam git
         gitkeep_file = Path(directory) / '.gitkeep'
         if not gitkeep_file.exists():
             gitkeep_file.touch()
 
 def pre_install_checks():
     """Perform pre-installation checks dan setup."""
-    print("ALICE Bot Installation - Pre-installation checks...")
+    print("ALICE Bot Installation - Pre-installation checks…")
 
+    # Validate Python version
     validate_python_version()
     print(f"✓ Python version: {sys.version.split()[0]}")
 
+    # Check platform compatibility
     current_platform = platform.system()
     supported_platforms = ['Windows', 'Linux', 'Darwin']
 
@@ -240,10 +256,12 @@ def pre_install_checks():
     else:
         print(f"✓ Platform supported: {current_platform}")
 
+    # Check available disk space (minimum 100MB)
     try:
         import shutil
         free_space = shutil.disk_usage('.').free
-        required_space = 100 * 1024 * 1024
+        required_space = 100 * 1024 * 1024  # 100MB
+        
         if free_space < required_space:
             print(f"Warning: Low disk space. Available: {free_space // 1024 // 1024}MB")
         else:
@@ -251,6 +269,7 @@ def pre_install_checks():
     except Exception as e:
         print(f"Warning: Could not check disk space: {e}")
 
+    # Create necessary directories
     create_directories()
     print("✓ Required directories created")
 
@@ -266,7 +285,7 @@ def post_install_message():
 ║  Installation berhasil! Berikut langkah selanjutnya:                        ║
 ║                                                                              ║
 ║  1. Verifikasi instalasi:                                                    ║
-║     alice --version                                                          ║
+║     alice –version                                                           ║
 ║                                                                              ║
 ║  2. Tampilkan bantuan:                                                       ║
 ║     alice h                                                                  ║
@@ -291,6 +310,7 @@ def post_install_message():
     print(message)
 
 # Combine all extra requirements
+
 extras_require = get_extra_requirements()
 all_extras = []
 for extra_list in extras_require.values():
@@ -299,8 +319,10 @@ for extra_list in extras_require.values():
 extras_require['all'] = list(set(all_extras))
 
 if __name__ == "__main__":
+    # Pre-installation checks
     pre_install_checks()
 
+    # Main setup configuration
     setup(
         name=PACKAGE_NAME,
         version=PACKAGE_VERSION,
@@ -333,4 +355,5 @@ if __name__ == "__main__":
         }
     )
 
+    # Post-installation message
     post_install_message()
