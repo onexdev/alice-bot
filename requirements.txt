@@ -2,7 +2,11 @@
 
 # Requirements file untuk dependencies management dengan versi yang tested dan secure
 
+# 
+
 # Instalasi: pip install -r requirements.txt
+
+# 
 
 # Penulis: onex_dv
 
@@ -13,6 +17,7 @@
 # Versi: 1.0.0
 
 # Core HTTP dan Networking Libraries
+
 # ===================================
 
 aiohttp>=3.9.0,<4.0.0              # Async HTTP client/server untuk API calls dengan performance tinggi
@@ -20,42 +25,48 @@ aiofiles>=23.2.0,<24.0.0           # Async file operations untuk non-blocking I/
 requests>=2.31.0,<3.0.0            # HTTP library sebagai fallback untuk sync operations
 
 # Cryptography dan Security Libraries
+
 # ====================================
 
 cryptography>=41.0.0,<42.0.0       # AES-256 encryption untuk credential storage dan security
-hashlib-compat>=1.0.0,<2.0.0       # Enhanced hash functions untuk data integrity
 
 # System Monitoring dan Performance Libraries
+
 # ============================================
 
 psutil>=5.9.0,<6.0.0               # System dan process monitoring untuk performance tracking
 memory-profiler>=0.61.0,<1.0.0     # Memory usage profiling untuk optimization
 
 # Data Processing dan Validation Libraries
+
 # =========================================
 
 pathlib2>=2.3.7,<3.0.0            # Enhanced path operations untuk cross-platform compatibility
 configparser>=5.3.0,<6.0.0        # Configuration file parsing dengan advanced features
 
 # Logging dan Monitoring Libraries
+
 # =================================
 
 colorlog>=6.7.0,<7.0.0            # Colored logging untuk enhanced terminal output
 loguru>=0.7.0,<1.0.0              # Advanced logging dengan rotation dan compression
 
 # Date dan Time Libraries
+
 # =======================
 
 python-dateutil>=2.8.0,<3.0.0     # Advanced date/time parsing dan manipulation
 pytz>=2023.3,<2024.0              # Timezone handling untuk global operations
 
 # JSON dan Data Serialization
+
 # ============================
 
 ujson>=5.8.0,<6.0.0               # Ultra-fast JSON parsing untuk performance optimization
 orjson>=3.9.0,<4.0.0              # Optimized JSON serialization untuk large datasets
 
 # Development dan Testing Libraries (Optional)
+
 # =============================================
 
 pytest>=7.4.0,<8.0.0              # Testing framework untuk unit dan integration tests
@@ -66,146 +77,189 @@ flake8>=6.0.0,<7.0.0              # Linting untuk code quality checks
 mypy>=1.5.0,<2.0.0                # Type checking untuk better code reliability
 
 # Platform-specific Libraries
+
 # ============================
 
 # Windows specific
 
-pywin32>=306;platform_system=="Windows"        # Windows API access untuk system integration
-wmi>=1.5.1;platform_system=="Windows"          # Windows Management Instrumentation
+pywin32>=306;platform_system==“Windows”        # Windows API access untuk system integration
+wmi>=1.5.1;platform_system==“Windows”         # Windows Management Instrumentation
 
 # Linux/Unix specific
 
-python-prctl>=1.8.1;platform_system=="Linux"   # Process control untuk Linux systems
+python-prctl>=1.8.1;platform_system==“Linux”  # Process control untuk Linux systems
 
 # macOS specific
 
-pyobjc-core>=9.2;platform_system=="Darwin"     # Objective-C bridge untuk macOS integration
+pyobjc-core>=9.2;platform_system==“Darwin”    # Objective-C bridge untuk macOS integration
 
 # Optional Performance Enhancements
+
 # ==================================
 
-uvloop>=0.17.0;platform_system!="Windows"      # Ultra-fast event loop untuk Linux/macOS
-cchardet>=2.1.7,<3.0.0                         # Fast character encoding detection
-lxml>=4.9.0,<5.0.0                             # Fast XML processing jika diperlukan untuk future features
+uvloop>=0.17.0;platform_system!=“Windows”     # Ultra-fast event loop untuk Linux/macOS
+cchardet>=2.1.7,<3.0.0                        # Fast character encoding detection
+lxml>=4.9.0,<5.0.0                           # Fast XML processing jika diperlukan untuk future features
 
 # Security Enhancements
+
 # =====================
 
-certifi>=2023.7.22                             # Updated CA certificates untuk secure HTTPS
-urllib3>=2.0.0,<3.0.0                          # Secure HTTP library dengan security patches
+certifi>=2023.7.22                           # Updated CA certificates untuk secure HTTPS
+urllib3>=2.0.0,<3.0.0                        # Secure HTTP library dengan security patches
 
 # Data Validation Libraries
+
 # ==========================
 
-validators>=0.22.0,<1.0.0                      # Input validation untuk various data types
-phonenumbers>=8.13.0,<9.0.0                    # Phone number validation jika diperlukan
-email-validator>=2.0.0,<3.0.0                  # Email validation untuk future features
+validators>=0.22.0,<1.0.0                    # Input validation untuk various data types
+phonenumbers>=8.13.0,<9.0.0                  # Phone number validation jika diperlukan
+email-validator>=2.0.0,<3.0.0                # Email validation untuk future features
 
 # Blockchain dan Crypto Libraries (Optional untuk future enhancements)
+
 # ======================================================================
 
-eth-hash>=0.5.2,<1.0.0                         # Ethereum hashing functions
-eth-utils>=2.2.0,<3.0.0                        # Ethereum utility functions
-web3>=6.9.0,<7.0.0                             # Ethereum blockchain interaction library
+eth-hash>=0.5.2,<1.0.0                       # Ethereum hashing functions
+eth-utils>=2.2.0,<3.0.0                      # Ethereum utility functions
+web3>=6.9.0,<7.0.0                          # Ethereum blockchain interaction library
 
 # Database Libraries (Optional untuk future data storage)
+
 # ========================================================
 
-sqlite3                                        # Built-in SQLite untuk local data storage
-aiosqlite>=0.19.0,<1.0.0                       # Async SQLite operations
+aiosqlite>=0.19.0,<1.0.0                     # Async SQLite operations
 
 # Compression Libraries
+
 # =====================
 
-zstandard>=0.21.0,<1.0.0                       # Fast compression untuk log files
-gzip                                           # Built-in gzip compression
+zstandard>=0.21.0,<1.0.0                     # Fast compression untuk log files
 
 # Network Security Libraries
+
 # ===========================
 
-dnspython>=2.4.0,<3.0.0                        # DNS resolution dengan security features
-ipaddress                                      # Built-in IP address validation
+dnspython>=2.4.0,<3.0.0                      # DNS resolution dengan security features
 
 # Threading dan Concurrency
+
 # ==========================
 
-concurrent-futures>=3.1.1;python_version<"3.2" # Backport untuk older Python versions
-asyncio                                        # Built-in async support
+concurrent-futures>=3.1.1;python_version<“3.2”  # Backport untuk older Python versions
 
 # Text Processing
+
 # ===============
 
-regex>=2023.8.8,<2024.0.0                      # Advanced regex engine dengan Unicode support
-unidecode>=1.3.6,<2.0.0                        # Unicode text normalization
+regex>=2023.8.8,<2024.0.0                    # Advanced regex engine dengan Unicode support
+unidecode>=1.3.6,<2.0.0                      # Unicode text normalization
 
 # CLI Enhancement Libraries
+
 # =========================
 
-click>=8.1.0,<9.0.0                            # Command line interface framework
-rich>=13.5.0,<14.0.0                           # Rich text dan beautiful formatting untuk terminal
-prompt-toolkit>=3.0.39,<4.0.0                  # Interactive command line applications
+click>=8.1.0,<9.0.0                          # Command line interface framework
+rich>=13.5.0,<14.0.0                         # Rich text dan beautiful formatting untuk terminal
+prompt-toolkit>=3.0.39,<4.0.0                # Interactive command line applications
 
 # Error Tracking dan Monitoring (Optional)
+
 # =========================================
 
-sentry-sdk>=1.32.0,<2.0.0                      # Error tracking dan performance monitoring
+sentry-sdk>=1.32.0,<2.0.0                    # Error tracking dan performance monitoring
 
 # API Documentation (Optional untuk development)
+
 # ===============================================
 
-sphinx>=7.1.0,<8.0.0                           # Documentation generation
-sphinx-rtd-theme>=1.3.0,<2.0.0                 # Read the Docs theme
+sphinx>=7.1.0,<8.0.0                         # Documentation generation
+sphinx-rtd-theme>=1.3.0,<2.0.0               # Read the Docs theme
 
 # Version Information
+
 # ===================
 
 # Minimum Python version: 3.8.0
+
 # Recommended Python version: 3.11.0 atau higher
+
 # Operating Systems: Windows 10+, Linux (Ubuntu 20.04+), macOS 11+
+
 # Architecture: x86_64, ARM64 (Apple Silicon supported)
 
 # Installation Notes:
+
 # ===================
 
 # 1. Gunakan virtual environment untuk isolasi dependencies:
+
 # python -m venv alice_env
+
 # source alice_env/bin/activate  # Linux/macOS
+
 # alice_env\Scripts\activate     # Windows
 
+# 
+
 # 2. Upgrade pip sebelum instalasi:
-# python -m pip install --upgrade pip
+
+# python -m pip install –upgrade pip
+
+# 
 
 # 3. Install requirements:
+
 # pip install -r requirements.txt
 
+# 
+
 # 4. Untuk development environment:
+
 # pip install -r requirements.txt[dev]
 
+# 
+
 # 5. Untuk production environment (minimal dependencies):
+
 # pip install -r requirements-prod.txt
 
 # Security Notes:
+
 # ===============
 
 # - Semua packages telah dipilih dengan consideration terhadap security vulnerabilities
+
 # - Version ranges dipilih untuk balance antara stability dan security updates
+
 # - Regular dependency auditing direkomendasikan dengan: pip-audit
+
 # - Gunakan dependabot atau tools sejenis untuk automatic security updates
 
 # Performance Notes:
+
 # ==================
 
 # - uvloop digunakan untuk performance enhancement di Linux/macOS
+
 # - ujson dan orjson untuk fast JSON processing
+
 # - aiohttp untuk efficient async HTTP operations
+
 # - psutil untuk accurate system monitoring
+
 # - Semua libraries telah tested untuk compatibility dan performance
 
 # Compatibility Matrix:
+
 # =====================
 
 # Python 3.8:  Fully supported dengan semua features
+
 # Python 3.9:  Fully supported dengan enhanced performance
+
 # Python 3.10: Fully supported dengan latest optimizations
+
 # Python 3.11: Recommended untuk best performance
+
 # Python 3.12: Experimental support, testing recommended
